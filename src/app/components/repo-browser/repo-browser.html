@@ -2,5 +2,8 @@
 
 <input type="text" #repoName placeholder="Search Github Orgs">
 <button (click)="searchForOrg(repoName.value)">Search Orgs</button>
+<button (click)="getQuestionsPromise()">E24 Promise</button>
+<button (click)="getQuestionsObservable()">E24</button>
+
 
 <router-outlet></router-outlet>

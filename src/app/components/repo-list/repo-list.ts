@@ -16,6 +16,6 @@ export class RepoList {
   constructor(public github: Github, public params: RouteSegment) {}
 
   ngOnInit() {
-    this.repos = this.github.getReposForOrg(this.params.getParam('org'));
+	this.repos = this.github.getReposForOrg(this.params.getParam('org'));
   }
 }

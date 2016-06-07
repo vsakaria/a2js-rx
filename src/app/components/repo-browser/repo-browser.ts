@@ -23,10 +23,21 @@ export class RepoBrowser {
 
   searchForOrg(orgName: string) {
     this.github.getOrg(orgName)
-      .subscribe(({name}) => {
+      .subscribe(
+        ( {name} ) => {
         console.log(name);
         this.router.navigate(['/github', orgName]);
-      });
+      }
+      );
+  }
+
+  getQuestionsPromise() {
+    this.github.getQuestionsPromise()
+  }
+
+  getQuestionsObservable() {
+    this.github.getQuestionsObservable()
+      .subscribe(question => console.log(question));;
   }
 
 }

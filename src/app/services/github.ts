@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
-import 'rxjs/add/operator/map';
+import 'rxjs';
 
 @Injectable()
+
 export class Github {
   constructor(private http: Http) {}
 
@@ -16,6 +17,25 @@ export class Github {
 
   getRepoForOrg(org: string, repo: string) {
     return this.makeRequest(`repos/${org}/${repo}`);
+  }
+
+  getQuestionsPromise() {
+    let url = `http://localhost:3001/db`;
+    //debugger
+    return this.http.get(url).toPromise()
+      .then(this.consoleT);
+  }
+
+  consoleT(data) {
+    console.log(data.json());
+  }
+
+  getQuestionsObservable() {
+    let url = `http://localhost:3001/db`;
+
+    return this.http.get(url)
+      .map(res => res.json())
+      .map(json => json.questionsInformation)
   }
 
   private makeRequest(path: string) {
