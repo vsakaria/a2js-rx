@@ -1,8 +1,20 @@
-<h3>Repo list</h3>
 <ul>
+	<li *ngFor="let question of questions | async">
+    	{{question.displayText}}
+
+    	<ul>
+    		<li *ngFor="let answer of question.answerChoices">
+				{{answer.displayText}}
+    		</li>
+    	</ul>
+
+	</li>
+</ul>
+
+<!-- <ul>
 	<li *ngFor="let repo of repos | async">
     <a [routerLink]="['/github', repo.owner.login, repo.name]">
       {{ repo.name }}
     </a>
   </li>
-</ul>
+</ul> -->

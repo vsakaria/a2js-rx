@@ -16,6 +16,7 @@ export class Github {
   }
 
   getRepoForOrg(org: string, repo: string) {
+    debugger;
     return this.makeRequest(`repos/${org}/${repo}`);
   }
 
@@ -34,8 +35,10 @@ export class Github {
     let url = `http://localhost:3001/db`;
 
     return this.http.get(url)
-      .map(res => res.json())
-      .map(json => json.questionsInformation)
+        // .map((data) => data.questionsInformation)
+        .map((res) => res.json().questionsInformation.questions);
+
+
   }
 
   private makeRequest(path: string) {

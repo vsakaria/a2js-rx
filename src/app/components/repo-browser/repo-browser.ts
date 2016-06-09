@@ -13,10 +13,13 @@ import {Github} from '../../services/github';
   directives: [ ROUTER_DIRECTIVES ],
   pipes: []
 })
+
 @Routes([
+  { path: '/',       component: RepoList,  },
   { path: '/:org',       component: RepoList,  },
   { path: '/:org/:name', component: RepoDetail },
 ])
+
 export class RepoBrowser {
 
   constructor(private router: Router, private github: Github) {}
@@ -24,11 +27,10 @@ export class RepoBrowser {
   searchForOrg(orgName: string) {
     this.github.getOrg(orgName)
       .subscribe(
-        ( {name} ) => {
-        console.log(name);
+        ( {name, location} ) => {
+        console.log(name, location, orgName);
         this.router.navigate(['/github', orgName]);
-      }
-      );
+      });
   }
 
   getQuestionsPromise() {
@@ -36,8 +38,8 @@ export class RepoBrowser {
   }
 
   getQuestionsObservable() {
-    this.github.getQuestionsObservable()
-      .subscribe(question => console.log(question));;
+    this.router.navigate(['/github']);
+    // this.github.getQuestionsObservable()
+    //   .subscribe( ({questions}) => console.log(questions));
   }
-
 }
