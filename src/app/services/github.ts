@@ -21,9 +21,10 @@ export class Github {
   }
 
   getQuestionsPromise() {
-    let url = `http://localhost:3001/db`;
-    //debugger
-    return this.http.get(url).toPromise()
+    let urlDev = `https://uk.dev.experthealth.local/api/questionnaire/member`;
+    let urlLoc = `http://localhost:3001/db`;
+
+    return this.http.get(urlDev).toPromise()
       .then(this.consoleT);
   }
 
@@ -32,13 +33,13 @@ export class Github {
   }
 
   getQuestionsObservable() {
-    let url = `http://localhost:3001/db`;
+    let urlDev = `https://uk.dev.experthealth.local/api/questionnaire/member`;
+    let urlLoc = `http://localhost:3001/db`;
 
-    return this.http.get(url)
-        // .map((data) => data.questionsInformation)
+    console.log('Observalble wrapper called');
+
+    return this.http.get(urlDev)
         .map((res) => res.json().questionsInformation.questions);
-
-
   }
 
   private makeRequest(path: string) {

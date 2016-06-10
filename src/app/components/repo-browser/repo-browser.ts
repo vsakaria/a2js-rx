@@ -15,9 +15,9 @@ import {Github} from '../../services/github';
 })
 
 @Routes([
-  { path: '/',       component: RepoList,  },
-  { path: '/:org',       component: RepoList,  },
-  { path: '/:org/:name', component: RepoDetail },
+  { path: '/',       component: RepoList,  }
+  //{ path: '/:org',       component: RepoList,  }
+  // { path: '/:org/:name', component: RepoDetail },
 ])
 
 export class RepoBrowser {
@@ -38,8 +38,8 @@ export class RepoBrowser {
   }
 
   getQuestionsObservable() {
-    this.router.navigate(['/github']);
-    // this.github.getQuestionsObservable()
+    //this.router.navigate(['/e24']);
+    this.github.getQuestionsObservable()
     //   .subscribe( ({questions}) => console.log(questions));
   }
 }

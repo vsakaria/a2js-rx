@@ -15,7 +15,7 @@ import {RepoBrowser} from './components/repo-browser/repo-browser';
 @Routes([
   { path: '/',       component: Home,       },
   { path: '/about',  component: About,      },
-  { path: '/github', component: RepoBrowser },
+  { path: '/e24', component: RepoBrowser },
 ])
 export class SeedApp {
 

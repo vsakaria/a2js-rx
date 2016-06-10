@@ -18,16 +18,14 @@ export class RepoList {
 
   ngOnInit() {
     this.questions = this.github.getQuestionsObservable();
-    this.repos = this.github.getReposForOrg(this.params.getParam('org'));
-
 
     this.github.getQuestionsObservable()
         .subscribe((questions) => console.log(questions));
 
-    this.github.getReposForOrg(this.params.getParam('org'))
-        .subscribe((questions) => console.log(questions));
-
-
+    //this.repos = this.github.getReposForOrg(this.params.getParam('org'));
+    //Console logs//
+    // this.github.getReposForOrg(this.params.getParam('org'))
+    //     .subscribe((questions) => console.log(questions));
     // console.log(this.questions, this.repos);
     // .subscribe((questions) => console.log(questions));
     // .subscribe( ({questions}) => console.log(questions));
