@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {Router, Routes, ROUTER_DIRECTIVES} from '@angular/router';
 
 import {RepoList} from '../repo-list/repo-list';
-import {RepoDetail} from '../repo-detail/repo-detail';
 import {Github} from '../../services/github';
 
 @Component({
@@ -16,30 +15,17 @@ import {Github} from '../../services/github';
 
 @Routes([
   { path: '/',       component: RepoList,  }
-  //{ path: '/:org',       component: RepoList,  }
-  // { path: '/:org/:name', component: RepoDetail },
 ])
 
 export class RepoBrowser {
 
   constructor(private router: Router, private github: Github) {}
 
-  searchForOrg(orgName: string) {
-    this.github.getOrg(orgName)
-      .subscribe(
-        ( {name, location} ) => {
-        console.log(name, location, orgName);
-        this.router.navigate(['/github', orgName]);
-      });
-  }
-
   getQuestionsPromise() {
     this.github.getQuestionsPromise()
   }
 
   getQuestionsObservable() {
-    //this.router.navigate(['/e24']);
     this.github.getQuestionsObservable()
-    //   .subscribe( ({questions}) => console.log(questions));
   }
 }

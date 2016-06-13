@@ -11,6 +11,7 @@ import {RouteSegment, ROUTER_DIRECTIVES} from '@angular/router';
   directives: [ ROUTER_DIRECTIVES ],
   pipes: []
 })
+
 export class RepoList {
   repos: Observable<any>;
   questions: Observable<any>;
@@ -21,14 +22,5 @@ export class RepoList {
 
     this.github.getQuestionsObservable()
         .subscribe((questions) => console.log(questions));
-
-    //this.repos = this.github.getReposForOrg(this.params.getParam('org'));
-    //Console logs//
-    // this.github.getReposForOrg(this.params.getParam('org'))
-    //     .subscribe((questions) => console.log(questions));
-    // console.log(this.questions, this.repos);
-    // .subscribe((questions) => console.log(questions));
-    // .subscribe( ({questions}) => console.log(questions));
-
   }
 }
