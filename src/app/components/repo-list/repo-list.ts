@@ -15,6 +15,7 @@ import {RouteSegment, ROUTER_DIRECTIVES} from '@angular/router';
 export class RepoList {
   repos: Observable<any>;
   questions: Observable<any>;
+
   constructor(public github: Github, public params: RouteSegment) {}
 
   ngOnInit() {
@@ -22,5 +23,5 @@ export class RepoList {
 
     this.github.getQuestionsObservable()
         .subscribe((questions) => console.log(questions));
-  }
+    }
 }

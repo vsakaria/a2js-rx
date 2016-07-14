@@ -21,11 +21,8 @@ export class RepoBrowser {
 
   constructor(private router: Router, private github: Github) {}
 
-  getQuestionsPromise() {
-    this.github.getQuestionsPromise()
-  }
-
   getQuestionsObservable() {
     this.github.getQuestionsObservable()
+        .subscribe((questions) => console.log(questions));
   }
 }
